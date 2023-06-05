@@ -1,7 +1,9 @@
 [versions]
 kotlin = "1.8.21"
+mavenPublish = "0.25.2"
 reckon = "0.18.0"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
 reckon = { id = "org.ajoberstar.reckon", version.ref = "reckon" }
