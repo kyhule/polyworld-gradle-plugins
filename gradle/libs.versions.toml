@@ -1,5 +1,7 @@
 [versions]
 kotlin = "1.8.21"
+reckon = "0.18.0"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+reckon = { id = "org.ajoberstar.reckon", version.ref = "reckon" }
