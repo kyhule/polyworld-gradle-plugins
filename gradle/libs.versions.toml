@@ -1,9 +1,11 @@
 [versions]
+githubRelease = "2.4.1"
 kotlin = "1.8.21"
 mavenPublish = "0.25.2"
 reckon = "0.18.0"
 
 [plugins]
+githubRelease = { id = "com.github.breadmoirai.github-release", version.ref = "githubRelease" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
 reckon = { id = "org.ajoberstar.reckon", version.ref = "reckon" }
