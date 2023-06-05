@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  pull_request:
+    paths-ignore:
+      - '*.md'
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: 'Select which component of the version should be incremented'
+        required: true
+        default: 'minor'
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+      stage:
+        description: 'Select which stage of the release should be published'
+        required: true
+        default: 'final'
+        type: choice
+        options:
+          - final
+          - snapshot
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  SCOPE: ${{ inputs.SCOPE || vars.SCOPE }}
+  STAGE: ${{ inputs.STAGE || vars.STAGE }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Needed so tags are fetched
+
+      - name: Set up Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Build
+        run: >
+          ./gradlew build
+          --no-configuration-cache
+
+      - name: Publish
+        if: github.event_name != 'pull_request'
+        run: >
+          ./gradlew publish
+          --no-configuration-cache
+          -Preckon.scope=${{ env.SCOPE }}
+          -Preckon.stage=${{ env.STAGE }}
+          -PgithubPackagesUsername=kyhule
+          -PgithubPackagesPassword=${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release
+        if: env.version-stage == 'final' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: >
+          ./gradlew githubRelease 
+          --no-configuration-cache
+          -Preckon.scope=${{ env.SCOPE }}
+          -Preckon.stage=${{ env.STAGE }}
