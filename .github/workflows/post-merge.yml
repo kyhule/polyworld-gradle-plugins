@@ -27,7 +27,7 @@ on:
 
 jobs:
   build:
-    uses: kyhule/polyworld-workflows/.github/workflows/post-merge.yml@9da5c4ddc40a2c2a0884a2d8f09136dc7d037f33
+    uses: kyhule/polyworld-workflows/.github/workflows/post-merge.yml@dcd13b2607582b3527dc6d0a11a6d56b8020aac2
     secrets: inherit
     with:
       version-scope: ${{ inputs.scope || vars.SCOPE }}
