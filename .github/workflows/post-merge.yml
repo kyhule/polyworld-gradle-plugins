@@ -1,0 +1,35 @@
+name: Post-merge
+
+on:
+  push:
+    branches:
+      - main
+      - 'release/**'
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: 'Select which component of the version should be incremented'
+        required: true
+        default: 'minor'
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+      stage:
+        description: 'Select which stage of the release should be published'
+        required: true
+        default: 'snapshot'
+        type: choice
+        options:
+          - final
+          - snapshot
+
+jobs:
+  build:
+    uses: kyhule/polyworld-workflows/.github/workflows/post-merge.yml@dcd13b2607582b3527dc6d0a11a6d56b8020aac2
+    secrets: inherit
+    with:
+      version-scope: ${{ inputs.scope || vars.SCOPE }}
+      version-stage: ${{ inputs.stage || vars.STAGE }}
+      setup-android: false
