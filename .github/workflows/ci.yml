@@ -63,7 +63,7 @@ jobs:
           -PgithubPackagesPassword=${{ secrets.GITHUB_TOKEN }}
 
       - name: Release
-        if: env.version-stage == 'final' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        if: env.STAGE == 'final' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: >
           ./gradlew githubRelease 
           --no-configuration-cache
