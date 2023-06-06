@@ -15,4 +15,4 @@ jobs:
     uses: kyhule/polyworld-workflows/.github/workflows/pre-merge.yml@9da5c4ddc40a2c2a0884a2d8f09136dc7d037f33
     secrets: inherit
     with:
-      android-setup: false
+      setup-android: false
