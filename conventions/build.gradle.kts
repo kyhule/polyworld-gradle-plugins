@@ -4,6 +4,16 @@ plugins {
     alias(libs.plugins.mavenPublish)
 }
 
+publishing {
+    repositories {
+        maven {
+            name = "githubPackages"
+            url = uri("https://maven.pkg.github.com/kyhule/polyworld-external-catalog")
+            credentials(PasswordCredentials::class)
+        }
+    }
+}
+
 dependencies {
     compileOnly(gradleApi())
     implementation(libs.gradlePlugin.dependencyAnalysis)
