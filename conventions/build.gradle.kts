@@ -8,7 +8,7 @@ publishing {
     repositories {
         maven {
             name = "githubPackages"
-            url = uri("https://maven.pkg.github.com/kyhule/polyworld-external-catalog")
+            url = uri("https://maven.pkg.github.com/kyhule/polyworld-gradle-plugin")
             credentials(PasswordCredentials::class)
         }
     }
