@@ -16,9 +16,11 @@ publishing {
 
 dependencies {
     compileOnly(gradleApi())
+    implementation(libs.gradlePlugin.android)
     implementation(libs.gradlePlugin.dependencyAnalysis)
     implementation(libs.gradlePlugin.doctor)
     implementation(libs.gradlePlugin.githubRelease)
+    implementation(libs.gradlePlugin.kotlin)
     implementation(libs.gradlePlugin.mavenPublish)
     implementation(libs.gradlePlugin.reckon)
 }
