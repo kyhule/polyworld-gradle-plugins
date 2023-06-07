@@ -1,8 +1,16 @@
+@file:Suppress("unused")
+
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
+val PluginDependenciesSpec.`polyworld-android-app`: PluginDependencySpec
+    get() = polyworld("android-app")
+
+val PluginDependenciesSpec.`polyworld-android-lib`: PluginDependencySpec
+    get() = polyworld("android-lib")
 val PluginDependenciesSpec.`polyworld-root`: PluginDependencySpec
     get() = polyworld("root")
+
 internal fun PluginDependenciesSpec.polyworld(
     name: String,
     version: String? = null
