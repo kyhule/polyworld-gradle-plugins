@@ -1,3 +1,4 @@
+import com.github.kyhule.polyworld.build.configureTestOptions
 import com.github.kyhule.polyworld.build.jdkVersion
 import com.github.kyhule.polyworld.build.compileSdkVersion as polyCompileSdkVersion
 import com.github.kyhule.polyworld.build.minSdkVersion
@@ -29,5 +30,9 @@ android {
 
     kotlinOptions {
         jvmTarget = jdkVersion.toString()
+    }
+
+    testOptions {
+        configureTestOptions(project)
     }
 }

@@ -245,3 +245,8 @@ internal fun Project.optionalStringProvider(
 ): Provider<String> {
   return safeProperty(key).let { defaultValue?.let { provider { defaultValue } } ?: it }
 }
+
+internal fun Project.isLinux() : Boolean {
+  return providers.systemProperty("os.name").orNull?.equals("linux", ignoreCase = true) == true
+}
+
