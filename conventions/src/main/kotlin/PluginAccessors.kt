@@ -14,6 +14,9 @@ val PluginDependenciesSpec.`polyworld-root`: PluginDependencySpec
 val PluginDependenciesSpec.`polyworld-maven-publish`: PluginDependencySpec
     get() = polyworld("maven-publish")
 
+val PluginDependenciesSpec.`polyworld-versioning`: PluginDependencySpec
+    get() = polyworld("versioning")
+
 internal fun PluginDependenciesSpec.polyworld(
     name: String,
     version: String? = null
