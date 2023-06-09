@@ -20,6 +20,7 @@ dependencies {
     implementation(libs.gradlePlugin.dependencyAnalysis)
     implementation(libs.gradlePlugin.doctor)
     implementation(libs.gradlePlugin.githubRelease)
+    implementation(libs.gradlePlugin.gradleAndroidCacheFix)
     implementation(libs.gradlePlugin.kotlin)
     implementation(libs.gradlePlugin.mavenPublish)
     implementation(libs.gradlePlugin.reckon)
