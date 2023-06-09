@@ -6,6 +6,7 @@ import com.github.kyhule.polyworld.build.targetSdkVersion
 
 plugins {
     id("com.android.library")
+    id("org.gradle.android.cache-fix")
     id("kotlin-android")
 }
 
