@@ -11,6 +11,9 @@ val PluginDependenciesSpec.`polyworld-android-lib`: PluginDependencySpec
 val PluginDependenciesSpec.`polyworld-root`: PluginDependencySpec
     get() = polyworld("root")
 
+val PluginDependenciesSpec.`polyworld-github-release`: PluginDependencySpec
+    get() = polyworld("github-release")
+
 val PluginDependenciesSpec.`polyworld-maven-publish`: PluginDependencySpec
     get() = polyworld("maven-publish")
 
