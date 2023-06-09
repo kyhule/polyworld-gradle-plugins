@@ -18,6 +18,9 @@ val Project.targetSdkVersion: Int
 val Project.jdkVersion: Int
     get() = intProperty("polyworld.jdkVersion", defaultValue = 17)
 
+val Project.composeCompilerVersion: String
+    get() = stringProperty("polyworld.jdkVersion", defaultValue = "1.4.7")
+
 /** Flag to enable verbose logging in unit tests. */
 val Project.testVerboseLogging: Boolean
     get() = booleanProperty("polyworld.test.verboseLogging")

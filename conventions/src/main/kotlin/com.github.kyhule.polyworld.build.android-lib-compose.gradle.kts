@@ -1,4 +1,4 @@
-import com.xfinity.dh.build.ConventionPluginsVersions
+import com.github.kyhule.polyworld.build.composeCompilerVersion
 
 plugins {
     id("com.github.kyhule.polyworld.build.android-lib")
@@ -9,6 +9,6 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = ConventionPluginsVersions.ComposeCompilerVersion
+        kotlinCompilerExtensionVersion = composeCompilerVersion
     }
 }
