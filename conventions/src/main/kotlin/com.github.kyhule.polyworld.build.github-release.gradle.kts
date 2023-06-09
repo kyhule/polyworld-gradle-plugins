@@ -12,6 +12,5 @@ githubRelease {
     owner(extension.owner)
     releaseName { version.toString() }
     tagName { version.toString() }
-    apiEndpoint(extension.apiEndpoint)
     generateReleaseNotes { true }
 }
