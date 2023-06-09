@@ -8,6 +8,9 @@ val PluginDependenciesSpec.`polyworld-android-app`: PluginDependencySpec
 val PluginDependenciesSpec.`polyworld-android-app-compose`: PluginDependencySpec
     get() = polyworld("android-app-compose")
 
+val PluginDependenciesSpec.`polyworld-android-lib`: PluginDependencySpec
+    get() = polyworld("android-lib")
+
 val PluginDependenciesSpec.`polyworld-android-lib-compose`: PluginDependencySpec
     get() = polyworld("android-lib-compose")
 val PluginDependenciesSpec.`polyworld-root`: PluginDependencySpec
