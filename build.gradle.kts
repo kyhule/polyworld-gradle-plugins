@@ -1,14 +1,6 @@
 plugins {
-    alias(libs.plugins.githubRelease)
     alias(libs.plugins.reckon)
-}
-
-githubRelease {
-    token { System.getenv("GITHUB_TOKEN") }
-    owner { "kyhule" }
-    releaseName { version.toString() }
-    tagName { version.toString() }
-    generateReleaseNotes { true }
+    alias(libs.plugins.githubRelease)
 }
 
 reckon {
@@ -16,4 +8,12 @@ reckon {
     setScopeCalc(calcScopeFromProp())
     snapshots()
     setStageCalc(calcStageFromProp())
+}
+
+githubRelease {
+    token { System.getenv("GITHUB_TOKEN") }
+    owner = "kyhule"
+    releaseName = version.toString()
+    tagName = version.toString()
+    generateReleaseNotes = true
 }

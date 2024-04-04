@@ -11,8 +11,8 @@ open class PolyworldGithubReleaseExtension @Inject constructor(
     objects: ObjectFactory
 ) {
     val dryRun: Property<Boolean> = objects.property<Boolean>().convention(false)
-    val owner: Property<CharSequence> = objects.property<CharSequence>().convention("kyhule")
-    val token: Property<CharSequence> = objects.property<CharSequence>().convention(System.getenv("GITHUB_TOKEN"))
+    val owner: Property<String> = objects.property<String>().convention("kyhule")
+    val token: Property<String> = objects.property<String>().convention(System.getenv("GITHUB_TOKEN"))
 
     companion object {
         const val name = "polyworldGithubRelease"
