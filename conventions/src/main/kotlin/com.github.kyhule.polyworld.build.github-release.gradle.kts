@@ -7,10 +7,10 @@ plugins {
 val extension = PolyworldGithubReleaseExtension.create(project)
 
 githubRelease {
-    dryRun(extension.dryRun)
-    token(extension.token)
-    owner(extension.owner)
-    releaseName { version.toString() }
-    tagName { version.toString() }
-    generateReleaseNotes { true }
+    dryRun = extension.dryRun
+    token { extension.token.get() }
+    owner = extension.owner
+    releaseName = version.toString()
+    tagName = version.toString()
+    generateReleaseNotes = true
 }
