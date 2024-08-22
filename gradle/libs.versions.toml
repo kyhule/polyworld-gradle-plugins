@@ -1,10 +1,10 @@
 [versions]
-android-plugin = "8.3.1"
+android-plugin = "8.5.2"
 dependencyAnalysis = "1.33.0"
 dependencySorter = "0.8"
 githubRelease = "2.5.2"
 gradleDoctor = "0.10.0"
-kotlin = "1.9.23"
+kotlin = "1.9.25"
 mavenPublish = "0.29.0"
 reckon = "0.18.3"
 
