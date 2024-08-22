@@ -10,3 +10,49 @@ jobs:
     secrets: inherit
     with:
       setup-android: false
+
+  integration-dry-run:
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      ORG_GRADLE_PROJECT_githubPackagesUsername: kyhule
+      ORG_GRADLE_PROJECT_githubPackagesPassword: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          path: polyworld-gradle-plugin
+
+      - name: Enable composite include
+        working-directory: polyworld-gradle-plugin
+        run: |
+          touch .composite-include
+
+      - name: Checkout polyworld-app repo
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          repository: kyhule/polyworld-app
+          path: polyworld-app
+
+      - name: Set up Java
+        uses: actions/setup-java@6a0805fcefea3d4657a47ac4c165951e33482018 # v4.2.2
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+
+      - name: Set up Gradle
+        uses: gradle/gradle-build-action@ac2d340dc04d9e1113182899e983b5400c17cda1 # v3.5.0
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@00854ea68c109d98c75d956347303bf7c45b0277 # v3.2.1
+
+      - name: Assemble Polyworld apk
+        working-directory: polyworld-app
+        run: |
+          ./gradlew assemble
+
+      - name: Test polyworld
+        working-directory: polyworld-app
+        run: |
+          ./gradlew test
