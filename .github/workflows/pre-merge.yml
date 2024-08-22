@@ -14,6 +14,9 @@ jobs:
   integration-dry-run:
     needs: build
     runs-on: ubuntu-latest
+    env:
+      ORG_GRADLE_PROJECT_githubPackagesUsername: kyhule
+      ORG_GRADLE_PROJECT_githubPackagesPassword: ${{ secrets.GITHUB_TOKEN }}
     steps:
 
       - name: Checkout
