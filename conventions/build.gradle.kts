@@ -50,4 +50,3 @@ tasks.named<Test>("test") {
     // Use JUnit Jupiter for unit tests.
     useJUnitPlatform()
 }
-
