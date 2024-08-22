@@ -1,25 +1,25 @@
 package com.github.kyhule.polyworld.build
 
-import com.github.kyhule.polyworld.build.util.*
 import com.github.kyhule.polyworld.build.util.booleanProperty
+import com.github.kyhule.polyworld.build.util.booleanProvider
+import com.github.kyhule.polyworld.build.util.intProperty
+import com.github.kyhule.polyworld.build.util.intProvider
 import com.github.kyhule.polyworld.build.util.longProperty
+import com.github.kyhule.polyworld.build.util.stringProperty
 import org.gradle.api.Project
 import org.gradle.api.provider.Provider
 
-val Project.compileSdkVersion: Int
-    get() = intProperty("polyworld.compileSdkVersion", defaultValue = 33)
+val Project.androidCompileSdk: Int
+    get() = intProperty("polyworld.android.compileSdk", defaultValue = 34)
 
-val Project.minSdkVersion: Int
+val Project.androidMinSdk: Int
     get() = intProperty("polyworld.minSdkVersion", defaultValue = 24)
 
-val Project.targetSdkVersion: Int
-    get() = intProperty("polyworld.targetSdkVersion", defaultValue = 33)
+val Project.androidTargetSdk: Int
+    get() = intProperty("polyworld.android.targetSdk", defaultValue = 34)
 
-val Project.jdkVersion: Int
-    get() = intProperty("polyworld.jdkVersion", defaultValue = 19)
-
-val Project.composeCompilerVersion: String
-    get() = stringProperty("polyworld.jdkVersion", defaultValue = "1.5.11")
+val Project.jdk: Int
+    get() = intProperty("polyworld.jdkVersion", defaultValue = 17)
 
 /** Flag to enable verbose logging in unit tests. */
 val Project.testVerboseLogging: Boolean
@@ -51,6 +51,21 @@ val Project.testMinHeapSize: String
  */
 val Project.testMaxHeapSize: String
     get() = stringProperty("polyworld.test.maxHeapSize", "1g")
+
+/**
+ * Property corresponding to the number of parallel forks to create for executing unit tests in CI.
+ *
+ * **See Also:** [Parallel test execution](https://docs.gradle.org/current/userguide/performance.html#parallel_test_execution)
+ */
+val Project.unitTestParallelismMultiplier: Float
+    get()  {
+        val rawValue = stringProperty("xfinity.unit-test.parallelismMultiplier", "0.5")
+        val floatValue = rawValue.toFloatOrNull()
+        require(floatValue != null && floatValue > 0) {
+            "Invalid value for xfinity.unit-test.parallelismMultiplier: '$rawValue'"
+        }
+        return floatValue
+    }
 
 /**
  * Property corresponding to the number of parallel forks to create for executing unit tests in CI.

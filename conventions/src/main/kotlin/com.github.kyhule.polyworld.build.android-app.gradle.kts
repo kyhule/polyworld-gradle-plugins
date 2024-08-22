@@ -1,8 +1,5 @@
-import com.github.kyhule.polyworld.build.configureTestOptions
-import com.github.kyhule.polyworld.build.jdkVersion
-import com.github.kyhule.polyworld.build.compileSdkVersion as polyCompileSdkVersion
-import com.github.kyhule.polyworld.build.minSdkVersion
-import com.github.kyhule.polyworld.build.targetSdkVersion
+import com.github.kyhule.polyworld.build.androidTargetSdk
+import com.github.kyhule.polyworld.build.configureKotlinAndroid
 
 plugins {
     id("com.android.application")
@@ -10,30 +7,8 @@ plugins {
     id("kotlin-android")
 }
 
+
 android {
-    compileSdk = polyCompileSdkVersion
-
-    defaultConfig {
-        minSdk = minSdkVersion
-        targetSdk = targetSdkVersion
-    }
-
-    buildTypes {
-        debug {
-            matchingFallbacks.add("release")
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.toVersion(jdkVersion)
-        targetCompatibility = JavaVersion.toVersion(jdkVersion)
-    }
-
-    kotlinOptions {
-        jvmTarget = jdkVersion.toString()
-    }
-
-    testOptions {
-        configureTestOptions(project)
-    }
+    configureKotlinAndroid(this)
+    defaultConfig.targetSdk = androidTargetSdk
 }

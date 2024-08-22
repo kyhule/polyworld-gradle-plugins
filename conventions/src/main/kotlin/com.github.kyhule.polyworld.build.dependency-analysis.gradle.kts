@@ -5,7 +5,6 @@ plugins {
 dependencyAnalysis {
     issues {
         all {
-            onAny { ignoreKtx(true) }
             onUnusedAnnotationProcessors {
                 severity("fail")
             }
@@ -20,7 +19,9 @@ dependencyAnalysis {
             ignoreInternalPackages()
         }
     }
-    dependencies {
+    structure {
+        ignoreKtx(true)
+
         bundle("androidx-camera") {
             primary("androidx.camera:camera-camera2")
             includeGroup("androidx.camera")
