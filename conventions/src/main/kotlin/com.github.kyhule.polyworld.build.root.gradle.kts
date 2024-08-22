@@ -3,6 +3,6 @@ plugins {
     id("com.github.kyhule.polyworld.build.doctor")
 }
 
-tasks.register("clean") {
-    delete(buildDir)
+allprojects {
+    apply(plugin = "com.squareup.sort-dependencies")
 }

@@ -1,14 +1,10 @@
-import com.github.kyhule.polyworld.build.composeCompilerVersion
+import com.github.kyhule.polyworld.build.configureAndroidCompose
 
 plugins {
     id("com.github.kyhule.polyworld.build.android-app")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = composeCompilerVersion
-    }
+    configureAndroidCompose(this)
 }

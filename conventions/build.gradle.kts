@@ -17,7 +17,9 @@ publishing {
 dependencies {
     compileOnly(gradleApi())
     implementation(libs.gradlePlugin.android)
+    implementation(libs.gradlePlugin.compose)
     implementation(libs.gradlePlugin.dependencyAnalysis)
+    implementation(libs.gradlePlugin.dependencySorter)
     implementation(libs.gradlePlugin.doctor)
     implementation(libs.gradlePlugin.githubRelease)
     implementation(libs.gradlePlugin.gradleAndroidCacheFix)
